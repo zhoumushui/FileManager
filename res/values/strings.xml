@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FileManager</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- File Manager -->
+    <string name="cannot_read_directory_s">未插入 %s</string>
+    <string name="open_file_with_">打开 %s 为</string>
+    <string name="size_s">大小: %s</string>
+    <string name="folder">%d 条目</string>
+    <string name="open_drawer">打开抽屉</string>
+    <string name="close_drawer">关闭抽屉</string>
+    <string name="remove_favourite">移除收藏</string>
+    <string name="folder_empty">空文件夹</string>
+    <string name="_d_objects">%d 条目</string>
+    <string name="delete_d_items_">删除 %d 个条目?</string>
+    <string name="select_all">全选</string>
+    <string name="rename">重命名</string>
+    <string name="share">分享</string>
+    <string name="_d_files_deleted">已删除 %d 个文件</string>
+    <string name="add_to_homescreen">创建快捷方式</string>
+    <string name="add_to_homescreen_multiple">创建快捷方式</string>
+    <string name="shortcut_created">快捷方式已创建</string>
+    <string name="root">根目录</string>
+    <string name="cut">剪切</string>
+    <string name="paste_here">粘贴到此</string>
+    <string name="objects_cut_to_clipboard">已剪切到剪贴板</string>
+    <string name="files_pasted">文件已粘贴</string>
+    <string name="clipboard_is_empty">剪贴板无内容</string>
+    <string name="refresh">刷新</string>
+    <string name="copy">复制</string>
+    <string name="objects_copied_to_clipboard">已复制到剪贴板</string>
+    <string name="create_folder">新建文件夹</string>
+    <string name="create">新建</string>
+    <string name="folder_created_successfully">成功创建文件夹</string>
+    <string name="loading_">加载中…</string>
+    <string name="folder_could_not_be_created">文件夹未创建</string>
+    <string name="pasting_files_">正在粘贴文件…</string>
+    <string name="downloads">下载</string>
+    <string name="pictures">图片</string>
+    <string name="movies">电影</string>
+    <string name="dcim">DCIM</string>
+    <string name="app_icon">App icon</string>
+    <string name="up">Up</string>
+    <string name="error">Error</string>
+    <string name="rename_file">重命名文件</string>
+    <string name="rename_folder">重命名文件夹</string>
+    <string name="file_renamed">文件重命名成功</string>
+    <string name="file_could_not_be_renamed_to_s">文件无法重命名为： %s</string>
+    <string name="photos">照片</string>
+    <string name="add_favourite">添加收藏</string>
+    <string name="file_info">文件信息</string>
+    <string name="mime_type_s">文件类型: %s</string>
+    <string name="delete">删除</string>
+    <string name="music">音乐</string>
+
+    <!-- FTP Remote Control -->
+    <string name="wifi_state">WiFi状态</string>
+    <string name="instruction_pre">启动后可以从电脑端远程管理手机文件</string>
+    <string name="instruction">请在“我的电脑”地址栏中输入：</string>
+    <string name="no_wifi">无WiFi网络</string>
+    <string name="no_wifi_hint">无WiFi网络,点击以查看WiFi设置</string>
+    <string name="storage_warning">外部存储不可用.</string>
+    <string name="start_server">启动服务</string>
+    <string name="stop_server">停止服务</string>
+    <string name="notif_title">远程管理服务正在运行</string>
+    <string name="notif_server_starting">远程管理服务已启动</string>
+
+</resources>

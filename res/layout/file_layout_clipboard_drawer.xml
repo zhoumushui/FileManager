@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListView xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listClipboard"
+    android:layout_width="@dimen/clipboard_drawer_width"
+    android:layout_height="match_parent"
+    android:layout_gravity="end"
+    android:background="#fff"
+    android:choiceMode="singleChoice"
+    android:clipToPadding="false"
+    android:divider="@android:color/transparent"
+    android:dividerHeight="0dp"
+    android:visibility="visible"
+    tools:listitem="@layout/file_list_item_file" />

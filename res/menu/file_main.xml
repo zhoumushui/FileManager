@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!--
+        <item
+        android:id="@+id/menu_about"
+        android:icon="@drawable/file_ic_about"
+        android:orderInCategory="40"
+        android:showAsAction="ifRoom"
+        android:title="@string/title_activity_about"/>
+    -->
+
+
+    <!--
+           <item
+        android:id="@+id/menu_ftp"
+        android:icon="@drawable/file_notification"
+        android:orderInCategory="40"
+        android:showAsAction="always"
+        android:title="FTP共享文件"/>
+    -->
+
+</menu>

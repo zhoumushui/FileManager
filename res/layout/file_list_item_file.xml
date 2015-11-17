@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/list_item_padding"
+    android:layout_marginTop="@dimen/list_item_padding"
+    android:background="@drawable/file_selector_list_item" >
+
+    <ImageView
+        android:id="@+id/imgFileIcon"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="2dp"
+        android:padding="15dp"
+        android:scaleType="center"
+        android:src="@drawable/file_icon_folder" />
+
+    <TextView
+        android:id="@+id/tvFileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/imgFileIcon"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="File name.mp4"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/tvFileDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tvFileName"
+        android:layout_marginLeft="2dp"
+        android:layout_toRightOf="@id/imgFileIcon"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Size: 48mb" />
+
+</RelativeLayout>

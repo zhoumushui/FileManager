@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- File Manager -->
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="list_icon_size">50dp</dimen>
+    <dimen name="list_item_padding">5dp</dimen>
+    <dimen name="nav_drawer_width">260dp</dimen>
+    <dimen name="clipboard_drawer_width">@dimen/nav_drawer_width</dimen>
+    <dimen name="card_content_height">200dp</dimen>
+    <dimen name="min_tile_width">200dp</dimen>
+    <dimen name="setting_item_height">94dp</dimen>
+
+</resources>
