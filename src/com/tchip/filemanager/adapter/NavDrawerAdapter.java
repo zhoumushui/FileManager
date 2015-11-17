@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tchip.filemanager.MainActivity;
 import com.tchip.filemanager.R;
 import com.tchip.filemanager.ViewHolder;
 import com.tchip.filemanager.R.id;
 import com.tchip.filemanager.R.layout;
 import com.tchip.filemanager.adapter.NavDrawerAdapter.NavDrawerItem;
+import com.tchip.filemanager.ui.activity.MainActivity;
 
 import java.util.List;
 

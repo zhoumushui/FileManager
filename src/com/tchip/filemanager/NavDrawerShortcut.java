@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.tchip.filemanager.adapter.NavDrawerAdapter.NavDrawerItem;
+import com.tchip.filemanager.ui.activity.MainActivity;
 import com.tchip.filemanager.util.FileUtils;
 
 import java.io.File;

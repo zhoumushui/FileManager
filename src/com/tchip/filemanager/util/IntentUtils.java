@@ -10,7 +10,7 @@ import android.net.Uri;
 import java.io.File;
 import java.util.List;
 
-import com.tchip.filemanager.MainActivity;
+import com.tchip.filemanager.ui.activity.MainActivity;
 
 public class IntentUtils {
 

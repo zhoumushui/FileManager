@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.tchip.filemanager.adapter.NavDrawerAdapter.NavDrawerItem;
+import com.tchip.filemanager.ui.activity.MainActivity;
 
 public class NavDrawerDivider implements NavDrawerItem {
 	CharSequence title;

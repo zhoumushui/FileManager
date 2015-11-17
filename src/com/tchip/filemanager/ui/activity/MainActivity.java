@@ -1,4 +1,4 @@
-package com.tchip.filemanager;
+package com.tchip.filemanager.ui.activity;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
@@ -22,6 +22,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.tchip.filemanager.Clipboard;
+import com.tchip.filemanager.FavouritesManager;
+import com.tchip.filemanager.FolderFragment;
+import com.tchip.filemanager.FontApplicator;
+import com.tchip.filemanager.MyApplication;
 import com.tchip.filemanager.R;
 import com.tchip.filemanager.util.ListViewUtils;
 import com.tchip.filemanager.util.MyLog;

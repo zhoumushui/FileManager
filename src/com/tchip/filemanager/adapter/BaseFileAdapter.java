@@ -1,7 +1,10 @@
 package com.tchip.filemanager.adapter;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +20,11 @@ import com.tchip.filemanager.ViewHolder;
 import com.tchip.filemanager.R.drawable;
 import com.tchip.filemanager.R.id;
 import com.tchip.filemanager.R.string;
-import com.tchip.filemanager.model.DriveVideoDbHelper;
 import com.tchip.filemanager.util.FileUtils;
 
 public class BaseFileAdapter extends RobotoAdapter<File> {
 	protected final int layoutId;
 	final FileIconResolver fileIconResolver;
-	private DriveVideoDbHelper videoDb;
 	private Context context;
 
 	public BaseFileAdapter(Context context, int resource, File[] objects,
@@ -33,7 +34,6 @@ public class BaseFileAdapter extends RobotoAdapter<File> {
 		this.fileIconResolver = fileIconResolver;
 		this.context = context;
 
-		videoDb = new DriveVideoDbHelper(context);
 	}
 
 	public BaseFileAdapter(Context context, int resource, List<File> objects,
@@ -43,7 +43,6 @@ public class BaseFileAdapter extends RobotoAdapter<File> {
 		this.fileIconResolver = fileIconResolver;
 		this.context = context;
 
-		videoDb = new DriveVideoDbHelper(context);
 	}
 
 	protected int getItemLayoutId(int position) {
@@ -77,8 +76,8 @@ public class BaseFileAdapter extends RobotoAdapter<File> {
 		} else {
 			tvFileName.setText(strFileName);
 		}
-		
-		if("usbotg".equals(strFileName)){
+
+		if ("usbotg".equals(strFileName)) {
 			view.setVisibility(View.INVISIBLE);
 		}
 
@@ -104,7 +103,23 @@ public class BaseFileAdapter extends RobotoAdapter<File> {
 			// 判断视频是否加锁
 			String fileName = file.getName();
 			if (fileName.endsWith(".mp4")) {
-				int videoLock = videoDb.getLockStateByVideoName(fileName);
+
+				int videoLock = 0;
+				Uri uri = Uri
+						.parse("content://com.tchip.carlauncher.model.DriveVideoProvider/video/name/"
+								+ fileName);
+				ContentResolver resolve = context.getContentResolver();
+				// Uri uri, String[] projection, String selection, String[]
+				// selectionArgs, String sortOrder
+				Cursor cursor = resolve.query(uri, null, null, null, null);
+				if (cursor.getCount() > 0) {
+					cursor.moveToFirst();
+					videoLock = cursor.getInt(cursor.getColumnIndex("lock"));
+					cursor.close();
+				} else {
+					videoLock = 0;
+				}
+
 				if (1 == videoLock) {
 					imgIcon.setImageBitmap(BitmapFactory.decodeResource(
 							context.getResources(),

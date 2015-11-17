@@ -6,10 +6,12 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
@@ -46,7 +48,7 @@ import com.tchip.filemanager.R;
 import com.tchip.filemanager.adapter.FileAdapter;
 import com.tchip.filemanager.adapter.FileCardAdapter;
 import com.tchip.filemanager.adapter.FileAdapter.OnFileSelectedListener;
-import com.tchip.filemanager.model.DriveVideoDbHelper;
+import com.tchip.filemanager.ui.activity.MainActivity;
 import com.tchip.filemanager.util.FileUtils;
 import com.tchip.filemanager.util.IntentUtils;
 import com.tchip.filemanager.util.ListViewUtils;
@@ -70,7 +72,7 @@ public class FolderFragment extends Fragment implements OnItemClickListener,
 	public static final String EXTRA_DIR = "directory",
 			EXTRA_SELECTED_FILES = "selected_files",
 			EXTRA_SCROLL_POSITION = "scroll_position";
-	File currentDir, nextDir = null;
+	public File currentDir, nextDir = null;
 	int topVisibleItem = 0;
 	List<File> files = null;
 	@SuppressWarnings("rawtypes")
@@ -85,7 +87,6 @@ public class FolderFragment extends Fragment implements OnItemClickListener,
 	boolean preserveSelection = false;
 	FilePreviewCache thumbCache;
 
-	private DriveVideoDbHelper videoDb;
 	private Context context;
 
 	public AbsListView getListView() {
@@ -138,7 +139,6 @@ public class FolderFragment extends Fragment implements OnItemClickListener,
 		Log.d(LOG_TAG, "Fragment created");
 
 		context = getActivity().getApplicationContext();
-		videoDb = new DriveVideoDbHelper(context);
 
 		if (savedInstanceState != null) {
 			this.topVisibleItem = savedInstanceState.getInt(
@@ -673,7 +673,23 @@ public class FolderFragment extends Fragment implements OnItemClickListener,
 			if (file.isDirectory()) {
 				hasLockVideo(Arrays.asList(file.listFiles()));
 			} else if (file.getName().endsWith(".mp4")) {
-				int videoLock = videoDb.getLockStateByVideoName(file.getName());
+
+				int videoLock = 0;
+				Uri uri = Uri
+						.parse("content://com.tchip.carlauncher.model.DriveVideoProvider/video/name/"
+								+ file.getName());
+				ContentResolver resolve = context.getContentResolver();
+				// Uri uri, String[] projection, String selection, String[]
+				// selectionArgs, String sortOrder
+				Cursor cursor = resolve.query(uri, null, null, null, null);
+				if (cursor.getCount() > 0) {
+					cursor.moveToFirst();
+					videoLock = cursor.getInt(cursor.getColumnIndex("lock"));
+					cursor.close();
+				} else {
+					videoLock = 0;
+				}
+
 				MyLog.v("[FileManager]hasLockVideo:" + file.getName()
 						+ " LOCK:" + videoLock);
 				flagLockVideo += videoLock;
