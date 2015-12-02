@@ -95,7 +95,14 @@ public class BaseFileAdapter extends RobotoAdapter<File> {
 				tvFileDetails.setText(getContext().getString(R.string.folder,
 						files));
 			}
-			imgIcon.setImageResource(FileUtils.getFileIconResource(file));
+
+			// 修改内部存储图标
+			if ("sdcard0".equals(strFileName)) {
+				imgIcon.setImageBitmap(BitmapFactory.decodeResource(
+						context.getResources(), R.drawable.file_icon_system));
+			} else {
+				imgIcon.setImageResource(FileUtils.getFileIconResource(file));
+			}
 		} else {
 			tvFileDetails.setText(getContext().getString(R.string.size_s,
 					FileUtils.formatFileSize(file)));
