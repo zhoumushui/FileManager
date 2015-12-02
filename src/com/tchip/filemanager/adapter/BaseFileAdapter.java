@@ -125,7 +125,9 @@ public class BaseFileAdapter extends RobotoAdapter<File> {
 							context.getResources(),
 							R.drawable.ui_camera_video_lock_normal_small));
 				} else {
-					imgIcon.setImageBitmap(fileIconResolver.getFileIcon(file));
+					// imgIcon.setImageBitmap(fileIconResolver.getFileIcon(file));
+					imgIcon.setImageBitmap(BitmapFactory.decodeResource(
+							context.getResources(), R.drawable.ui_icon_video));
 				}
 			} else {
 				imgIcon.setImageBitmap(fileIconResolver.getFileIcon(file));
