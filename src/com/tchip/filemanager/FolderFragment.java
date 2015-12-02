@@ -67,7 +67,7 @@ import java.util.List;
 public class FolderFragment extends Fragment implements OnItemClickListener,
 		OnScrollListener, OnItemLongClickListener, MultiChoiceModeListener,
 		OnFileSelectedListener {
-	private static final String LOG_TAG = "FolderFragment";
+	private static final String LOG_TAG = "ZMS";
 	private final int DISTANCE_TO_HIDE_ACTIONBAR = 0;
 	public static final String EXTRA_DIR = "directory",
 			EXTRA_SELECTED_FILES = "selected_files",
@@ -136,7 +136,7 @@ public class FolderFragment extends Fragment implements OnItemClickListener,
 		super.onCreate(savedInstanceState);
 		setRetainInstance(true);
 
-		Log.d(LOG_TAG, "Fragment created");
+		Log.d(LOG_TAG, "[FolderFragment]Fragment created");
 
 		context = getActivity().getApplicationContext();
 
@@ -235,7 +235,7 @@ public class FolderFragment extends Fragment implements OnItemClickListener,
 
 			@Override
 			protected void onPostExecute(AsyncResult<File[]> result) {
-				Log.d("folder fragment", "Task finished");
+				Log.d("ZMS", "folder fragment : Task finished");
 				loadFilesTask = null;
 
 				FileAdapter adapter;
@@ -913,7 +913,7 @@ public class FolderFragment extends Fragment implements OnItemClickListener,
 		shareActionProvider = null;
 		if (preserveSelection == false)
 			finishSelection();
-		Log.d(LOG_TAG, "Action mode destroyed");
+		Log.d(LOG_TAG, "[FolderFragment]Action mode destroyed");
 	}
 
 	@Override
@@ -960,7 +960,7 @@ public class FolderFragment extends Fragment implements OnItemClickListener,
 		updateActionMode();
 		if (fileAdapter != null)
 			fileAdapter.notifyDataSetChanged();
-		Log.d(LOG_TAG, "Selection cleared");
+		Log.d(LOG_TAG, "[FolderFragment]Selection cleared");
 	}
 
 	boolean isEverythingSelected() {

@@ -5,7 +5,7 @@ import android.graphics.Rect;
 import android.util.Log;
 
 public class BitmapUtils {
-	private static final String LOG_TAG = "BitmapUtils";
+	private static final String LOG_TAG = "ZMS";
 
 	public static Rect getBestFitRect(Bitmap bitmap, Rect destination) {
 		return getBestFitRect(bitmap, (float) destination.width()
@@ -41,7 +41,7 @@ public class BitmapUtils {
 
 		for (int i = 0; i < numItems; i++) {
 			int x = (i % cols) * itemWidth, y = (i / (rows + 1)) * itemHeight;
-			Log.d(LOG_TAG, x + "x" + y);
+			Log.d("ZMS", "[BitmapUtils]" + x + "x" + y);
 			result[i] = new Rect(x, y, x + itemWidth, y + itemHeight);
 		}
 

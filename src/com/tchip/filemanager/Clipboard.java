@@ -16,10 +16,11 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import com.tchip.filemanager.util.FileUtils;
+import com.tchip.filemanager.util.MyLog;
 import com.tchip.filemanager.util.FileUtils.DirectoryNotEmptyException;
 
 public class Clipboard {
-	private static final String LOG_TAG = "Clipboard";
+	private static final String LOG_TAG = "ZMS";
 
 	public static interface ClipboardListener {
 		void onClipboardContentsChange(Clipboard clipboard);
@@ -75,28 +76,36 @@ public class Clipboard {
 
 		if (file.isDirectory()) {
 			destinationDir = new File(destinationDir, file.getName());
-			for (File f : file.listFiles())
+			for (File f : file.listFiles()) {
 				pasteFile(f, destinationDir, fileAction, fileOperationListener);
+			}
 			try {
 				if (files.get(file) == FileAction.Cut)
 					FileUtils.deleteEmptyFolders(Arrays.asList(file));
 			} catch (DirectoryNotEmptyException e) {
 				e.printStackTrace();
+				MyLog.e("[Clipboard]deleteEmptyFolders :DirectoryNotEmptyException");
 			}
 		} else {
 			File newFile = new File(destinationDir, file.getName());
-			if (newFile.exists())
+			if (newFile.exists()) {
 				throw new FileUtils.FileAlreadyExistsException(newFile);
-			if (fileAction == FileAction.Cut)
-				file.renameTo(newFile);
-			else if (fileAction == FileAction.Copy)
+			}
+			if (fileAction == FileAction.Cut) {
+				//file.renameTo(newFile);
 				FileUtils.copyFile(file, newFile);
-			else
+				file.delete();
+				MyLog.v("[Clipboard] FileAction.Cut "+ file.getAbsolutePath()+" renameTo "
+						+ newFile.getAbsolutePath());
+			} else if (fileAction == FileAction.Copy) {
+				FileUtils.copyFile(file, newFile);
+				MyLog.v("[Clipboard]FileAction.Copy :copyFile");
+			} else
 				throw new RuntimeException("Unsupported operation "
 						+ files.get(file));
 			fileOperationListener.onFileProcessed(newFile.getName());
-			Log.d(LOG_TAG,
-					file.getName() + " pasted to " + newFile.getAbsolutePath());
+			Log.d(LOG_TAG, "[Clipboard]" + file.getName() + " pasted to "
+					+ newFile.getAbsolutePath());
 		}
 	}
 

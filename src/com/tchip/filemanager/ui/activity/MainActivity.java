@@ -365,7 +365,7 @@ public class MainActivity extends Activity implements OnItemClickListener,
 
 	@Override
 	public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-		Log.d("Key Long Press", event.toString());
+		Log.d("ZMS", "Key Long Press:" + event.toString());
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			finish();
 			return true;

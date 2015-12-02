@@ -263,11 +263,11 @@ public class FileUtils {
 	public static void validateCopyMoveDirectory(File file, File toFolder)
 			throws IOException {
 		if (toFolder.equals(file))
-			throw new IOException("Folder cannot be copied to itself");
+			throw new IOException("文件夹不能复制到自身");
 		else if (toFolder.equals(file.getParentFile()))
-			throw new IOException("Source and target directory are the same");
+			throw new IOException("源文件夹和目标文件夹相同");
 		else if (toFolder.getAbsolutePath().startsWith(file.getAbsolutePath()))
-			throw new IOException("Folder cannot be copied to its child folder");
+			throw new IOException("文件夹不能复制到自身子文件夹");
 	}
 
 	public static void copyFile(File src, File dst) throws IOException {
